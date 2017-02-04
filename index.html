@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-git常用命令整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/04/git常用命令整理/" class="article-date">
+  <time datetime="2017-02-04T11:18:41.000Z" itemprop="datePublished">2017-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/04/git常用命令整理/">git常用命令整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="克隆一个远程项目-为远程地址"><a href="#克隆一个远程项目-为远程地址" class="headerlink" title="克隆一个远程项目,  为远程地址"></a>克隆一个远程项目, <repo> 为远程地址</repo></h1><p>git clone <repo></repo></p>
+<h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><p>git status</p>
+<h1 id="提交-commit"><a href="#提交-commit" class="headerlink" title="提交 commit"></a>提交 commit</h1><p>git add -A # 将<br>git commit -m ‘your comment’</p>
+<h1 id="push-代码-将本地改动同步到服务器"><a href="#push-代码-将本地改动同步到服务器" class="headerlink" title="push 代码, 将本地改动同步到服务器"></a>push 代码, 将本地改动同步到服务器</h1><p>git push -u [remote-name] [branch-name] # 用于首次提交到远程服务器<br>git push # 最常用 push 命令<br>git push -f # 强行覆盖服务器上的，主要用于回滚服务器上提交历史</p>
+<h1 id="pull-代码-抓取远程数据并合并到本地"><a href="#pull-代码-抓取远程数据并合并到本地" class="headerlink" title="pull 代码, 抓取远程数据并合并到本地"></a>pull 代码, 抓取远程数据并合并到本地</h1><p>git pull [remote-name] [branch-name]<br>git pull</p>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>git branch # 查看当前分支情况<br>git checkout -b <branch> 创建新分支，并切换到新分支</branch></p>
+<h1 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h1><p>git merge [branch-name]<br>git merge –squash [branch-name]  # 创建一次提交而不是 merge 每一次提交</p>
+<h1 id="善用帮助"><a href="#善用帮助" class="headerlink" title="善用帮助"></a>善用帮助</h1><p>git help<br>git <command> -h<br>常见命令</p>
+<h1 id="修改远程-origin-地址"><a href="#修改远程-origin-地址" class="headerlink" title="修改远程 origin 地址"></a>修改远程 origin 地址</h1><p>git remote -v<br>git remote set-url origin <repo></repo></p>
+<h1 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h1><p>git log<br>git checkout <hash> # 用指定历史版本创建一个新的分支<br>git reset <hash> # 回到指定历史版本，不改动代码内容<br>git reset –hard <hash> # 回到指定历史版本，此时会丢失所有后续更改<br>更多实用功能<br>git stash       # git pull 之前隐藏改动<br>git stash pop   # 恢复改动</hash></hash></hash></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/04/git常用命令整理/" data-id="ciyr5e0f90000wufyhtduojac" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -78,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/04/hello-world/" data-id="ciyr4wwzl0000vwfyp8irf1g9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/04/hello-world/" data-id="ciyr5e0fi0002wufyyvwtlu8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/04/test1/" data-id="ciyr4wwzr0001vwfywbbgo2zr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/04/test1/" data-id="ciyr5e0ff0001wufykwz5qg76" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mon/">mon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -174,7 +220,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
     </div>
@@ -184,9 +230,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/04/git常用命令整理/">git常用命令整理</a>
+          </li>
         
           <li>
             <a href="/2017/02/04/hello-world/">(no title)</a>
