@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,40 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-this指向" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/27/this指向/" class="article-date">
+  <time datetime="2017-02-27T08:08:36.000Z" itemprop="datePublished">2017-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><h1 id="JavaScript的this总是指向一个对象-而具体指向哪个对象在运行时基于函数的执行环境动态绑定的-而非函数被声明时的环境"><a href="#JavaScript的this总是指向一个对象-而具体指向哪个对象在运行时基于函数的执行环境动态绑定的-而非函数被声明时的环境" class="headerlink" title="JavaScript的this总是指向一个对象,而具体指向哪个对象在运行时基于函数的执行环境动态绑定的,而非函数被声明时的环境."></a>JavaScript的this总是指向一个对象,而具体指向哪个对象在运行时基于函数的执行环境动态绑定的,而非函数被声明时的环境.</h1><h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><h1 id="除不常用with-和-eval-的情况-具体到实际应用中-this的指向大致可以分为以下4种"><a href="#除不常用with-和-eval-的情况-具体到实际应用中-this的指向大致可以分为以下4种" class="headerlink" title="除不常用with 和 eval 的情况,具体到实际应用中,this的指向大致可以分为以下4种."></a>除不常用with 和 eval 的情况,具体到实际应用中,this的指向大致可以分为以下4种.</h1><ol>
+<li>作为对象的方法调用.</li>
+<li>作为普通函数调用.</li>
+<li>构造器调用.</li>
+<li>Function.prototype.call 或 Function.prototype.apply调用</li>
+</ol>
+<h2 id="1-作为对象方法调用"><a href="#1-作为对象方法调用" class="headerlink" title="1. 作为对象方法调用"></a>1. 作为对象方法调用</h2><h1 id="当函数作为对象方法被调用时-this指向该对象"><a href="#当函数作为对象方法被调用时-this指向该对象" class="headerlink" title="当函数作为对象方法被调用时,this指向该对象"></a>当函数作为对象方法被调用时,this指向该对象</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  a:1,</div><div class="line">  getA:function()&#123;</div><div class="line">     alert (this === obj);    //输出: true</div><div class="line">     alert (this.a);          //输出:1</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">obj.getA();</div></pre></td></tr></table></figure>
+<h2 id="2-作为普通函数调用"><a href="#2-作为普通函数调用" class="headerlink" title="2.作为普通函数调用"></a>2.作为普通函数调用</h2><h1 id="当函数不作为对象属性被调用时-也就是我们常说的普通函数方式-此时-this-总是指向全局对象-在浏览器的JavaScript里-这个全局对象是window对象"><a href="#当函数不作为对象属性被调用时-也就是我们常说的普通函数方式-此时-this-总是指向全局对象-在浏览器的JavaScript里-这个全局对象是window对象" class="headerlink" title="当函数不作为对象属性被调用时,也就是我们常说的普通函数方式,此时 this 总是指向全局对象. 在浏览器的JavaScript里,这个全局对象是window对象"></a>当函数不作为对象属性被调用时,也就是我们常说的普通函数方式,此时 this 总是指向全局对象. 在浏览器的JavaScript里,这个全局对象是window对象</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">window.name = &apos;globaName&apos;;</div><div class="line">var getName = function()&#123;</div><div class="line">     return this.name;</div><div class="line">&#125;;</div><div class="line">console.log(getName());    //输出globalName</div><div class="line"></div><div class="line">window.name = &apos;globalName&apos;;</div><div class="line">var myObject = &#123;</div><div class="line">    name: &apos;sven&apos;,</div><div class="line">    getName: function()&#123;</div><div class="line">      return this.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">var getName = myObject.getName;</div><div class="line">console.log(getName());   // globalName</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/27/this指向/" data-id="cizntq0sd0003x3fys4pagf7f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-git常用命令整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -97,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/04/git常用命令整理/" data-id="ciyr5e0f90000wufyhtduojac" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/04/git常用命令整理/" data-id="cizntq0s30000x3fysx75vaz6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/04/hello-world/" data-id="ciyr5e0fi0002wufyyvwtlu8s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/04/hello-world/" data-id="cizntq0s80001x3fynbjabop9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/04/test1/" data-id="ciyr5e0ff0001wufykwz5qg76" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/04/test1/" data-id="cizntq0sb0002x3fytdczo5ku" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mon/">mon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -220,7 +254,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Arkiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
     </div>
@@ -230,9 +264,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Siste innlegg</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/27/this指向/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2017/02/04/git常用命令整理/">git常用命令整理</a>
